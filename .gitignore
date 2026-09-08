@@ -1,0 +1,5 @@
+# Local tooling
+.claude/
+
+# Large raw API dump kept locally for manual investigation, not part of the site
+items_raw.json

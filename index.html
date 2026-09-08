@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deadlock — Random Item Picker</title>
+  <style>
+    :root {
+      --bg: #14100c;
+      --panel: #211a12;
+      --border: #3a2e1f;
+      --text: #f0e6d2;
+      --muted: #a89a80;
+      --accent: #d9a441;
+      --weapon: #e8944a;
+      --vitality: #6fbf5b;
+      --spirit: #a06ff0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% -10%, #2a2013, var(--bg) 60%);
+      color: var(--text);
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 60px;
+    }
+
+    h1 {
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 24px;
+      color: var(--accent);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    #pick-btn {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #1a1408;
+      background: linear-gradient(180deg, #f0c060, var(--accent));
+      border: none;
+      border-radius: 8px;
+      padding: 14px 36px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(217, 164, 65, 0.35);
+      transition: transform 0.08s ease, box-shadow 0.2s ease;
+    }
+
+    #pick-btn:hover { box-shadow: 0 6px 20px rgba(217, 164, 65, 0.5); }
+    #pick-btn:active { transform: translateY(2px); }
+
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 980px;
+      margin-top: 36px;
+    }
+
+    #grid { perspective: 1200px; }
+
+    .card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--cat-color, var(--accent));
+      border-radius: 10px;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transform-style: preserve-3d;
+      animation: flyIn 0.65s cubic-bezier(0.18, 0.9, 0.25, 1.2) both;
+    }
+
+    .reroll {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--muted);
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.15s ease, color 0.15s ease, transform 0.3s ease;
+    }
+
+    .card:hover .reroll,
+    .reroll:focus-visible { opacity: 1; }
+
+    .reroll:hover {
+      color: var(--accent);
+      transform: rotate(180deg);
+    }
+
+    .card img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+    }
+
+    .card .name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      line-height: 1.25;
+    }
+
+    .card .cat {
+      margin-top: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--cat-color, var(--muted));
+    }
+
+    /* Cards fly in from the top-left while tumbling, then settle. */
+    @keyframes flyIn {
+      0% {
+        opacity: 0;
+        transform: translate3d(-60vw, -90vh, -600px) rotateZ(-160deg) rotateY(90deg) scale(0.4);
+      }
+      60% {
+        opacity: 1;
+        transform: translate3d(0, 0, 40px) rotateZ(12deg) rotateY(-8deg) scale(1.06);
+      }
+      80% {
+        transform: translate3d(0, 0, 0) rotateZ(-4deg) rotateY(0deg) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(0deg) scale(1);
+      }
+    }
+
+    /* Snappier single-card re-roll: quick coin-flip spin. */
+    @keyframes reflip {
+      0%   { opacity: 0; transform: rotateY(-180deg) scale(0.7); }
+      60%  { opacity: 1; transform: rotateY(20deg) scale(1.05); }
+      100% { opacity: 1; transform: rotateY(0deg) scale(1); }
+    }
+
+    .card.reflip {
+      animation: reflip 0.5s cubic-bezier(0.2, 0.85, 0.3, 1.1) both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { animation-duration: 0.2s; }
+      .card.reflip { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Deadlock Item Picker</h1>
+  <button id="pick-btn">Pick items</button>
+  <div id="grid"></div>
+
+  <script src="items.js"></script>
+  <script>
+    const CATEGORY_COLORS = {
+      weapon: "var(--weapon)",
+      vitality: "var(--vitality)",
+      spirit: "var(--spirit)",
+    };
+
+    const PICK_COUNT = 12;
+    const grid = document.getElementById("grid");
+    const btn = document.getElementById("pick-btn");
+
+    // Two items conflict if one is built from the other (container + component),
+    // using the transitive "contains" list baked into each item.
+    function conflicts(a, b) {
+      return (a.contains && a.contains.includes(b.name)) ||
+             (b.contains && b.contains.includes(a.name));
+    }
+
+    function pickRandom(list, n) {
+      const pool = [...list];
+      const chosen = [];
+      const count = Math.min(n, pool.length);
+      while (chosen.length < count && pool.length > 0) {
+        const idx = Math.floor(Math.random() * pool.length);
+        const candidate = pool.splice(idx, 1)[0];
+        if (chosen.some((c) => conflicts(c, candidate))) continue;
+        chosen.push(candidate);
+      }
+      return chosen;
+    }
+
+    // The currently displayed picks; drives single-card re-rolls.
+    let currentPicks = [];
+
+    // Pick one fresh item, excluding a set of names already in play and
+    // anything that conflicts with the other current picks.
+    function pickOne(excludeNames, others) {
+      const candidates = DEADLOCK_ITEMS.filter(
+        (item) => !excludeNames.has(item.name) && !others.some((o) => conflicts(o, item))
+      );
+      if (candidates.length === 0) return null;
+      return candidates[Math.floor(Math.random() * candidates.length)];
+    }
+
+    function repick(index) {
+      const others = currentPicks.filter((_, i) => i !== index);
+      const exclude = new Set(currentPicks.map((it) => it.name));
+      const replacement = pickOne(exclude, others);
+      if (!replacement) return; // nothing valid left to swap in
+      currentPicks[index] = replacement;
+      const card = buildCard(replacement, index);
+      card.classList.add("reflip"); // use the quick flip instead of the staggered fly-in
+      card.style.animationDelay = "0s"; // re-picks should flip immediately, not wait their turn
+      grid.replaceChild(card, grid.children[index]);
+    }
+
+    function buildCard(item, index) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.setProperty("--cat-color", CATEGORY_COLORS[item.category] || "var(--accent)");
+      // Stagger the fly-in so cards arrive one by one.
+      card.style.animationDelay = (index * 0.08) + "s";
+
+      const reroll = document.createElement("button");
+      reroll.className = "reroll";
+      reroll.type = "button";
+      reroll.title = "Re-pick this item";
+      reroll.setAttribute("aria-label", "Re-pick this item");
+      reroll.textContent = "↻"; // ↻
+      reroll.addEventListener("click", () => repick(index));
+
+      const img = document.createElement("img");
+      img.src = item.image;
+      img.alt = item.name;
+      img.loading = "lazy";
+
+      const name = document.createElement("div");
+      name.className = "name";
+      name.textContent = item.name;
+
+      const cat = document.createElement("div");
+      cat.className = "cat";
+      cat.textContent = item.category;
+
+      card.append(reroll, img, name, cat);
+      return card;
+    }
+
+    function render(items) {
+      currentPicks = items;
+      grid.innerHTML = "";
+      items.forEach((item, index) => grid.appendChild(buildCard(item, index)));
+    }
+
+    btn.addEventListener("click", () => {
+      render(pickRandom(DEADLOCK_ITEMS, PICK_COUNT));
+    });
+  </script>
+</body>
+</html>
