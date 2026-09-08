@@ -1,0 +1,23 @@
+# deadlock — Deadlock Item Picker. Preview vhost.
+# Owned by this repo (preview/vhost.caddy); synced to
+# /srv/preview/projects/deadlock/vhost.caddy on the preview VPS, where the full Caddy
+# config is validated and gracefully reloaded. See dev-codex/preview-vps.md.
+#
+# DEVIATION from the codex preview-vps contract (which mandates per-project containers,
+# a database, an /api same-origin proxy, and basic auth on the SPA): this project is a
+# plain static single-page site — index.html + items.js, no build, no container, no
+# database, no API. Oleg explicitly requested no database and no basic auth, so it is
+# served straight from the mutualized Caddy via file_server. Recorded in
+# .project-codex/INFRA.md.
+#
+# The project's git checkout is mounted read-only into the Caddy container at the same
+# path (/srv/preview/projects -> /srv/preview/projects:ro), so file_server serves the
+# static files directly. Repo metadata and non-site files are hidden so only the site
+# (index.html + items.js) is reachable.
+deadlock.{$DOMAIN} {
+	root * /srv/preview/projects/deadlock
+	encode gzip
+	file_server {
+		hide .git .gitignore README.md items_raw.json preview
+	}
+}
