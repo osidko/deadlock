@@ -23,6 +23,6 @@ deadlock.{$DOMAIN} {
 		# /srv/preview/… . A bare `preview` would therefore match the ancestor
 		# `preview` component of every file and 404 the entire site. Anchor the
 		# deploy folder to the root so it's matched as a full path, not a component.
-		hide .git .gitignore README.md items_raw.json {http.vars.root}/preview {http.vars.root}/preview/*
+		hide .git .gitignore README.md CLAUDE.md items_raw.json {http.vars.root}/.project-codex {http.vars.root}/.project-codex/* {http.vars.root}/preview {http.vars.root}/preview/*
 	}
 }
