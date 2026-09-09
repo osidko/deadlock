@@ -41,16 +41,41 @@ hide .git .gitignore README.md items_raw.json {http.vars.root}/preview {http.var
 See the annotated comment in `preview/vhost.caddy`. This trap applies to any static
 `file_server` project onboarded to this preview VPS.
 
+## Box access
+
+The authoritative access policy for the whole fleet lives in **`C:\ws\infra\CLAUDE.md`**
+(the infra/IaC repo). This box is a standalone `net.sidko.*` VPS in the `preview-vps` cluster.
+Summary of what applies here:
+
+- **Connect as the dedicated `claude` user** with the passwordless ed25519 key
+  `~/.ssh/id_ed25519_claude` (fingerprint `SHA256:y17qQUYBmUwiN3m3UbAnYeOqfHLtWTcGl7lYHtJLbLw`;
+  vault ref `🔒 Infra/claude-ssh`). The `claude` user has NOPASSWD sudo.
+- **No VPN, no `from=` pin.** `net.sidko.*` VPS are reached directly from the admin
+  workstation egress (`92.135.107.50`) — unlike the VPN-only OVH/Hetzner fleet hosts. So a
+  plain `ssh -i ~/.ssh/id_ed25519_claude claude@94.75.223.21` works from Oleg's workstation.
+- **The site checkout is owned by the `deploy` user.** Run git operations as that user via
+  `sudo -u deploy git -C /srv/preview/projects/deadlock …` — running git as root trips
+  "dubious ownership".
+- Do **not** rely on the personal `deploy@…` key or the ssh-agent: in this repo's history that
+  key was rejected (`Permission denied (publickey)`) because the agent wasn't loaded. The
+  `claude` key is the supported path. Secrets policy: the key value never lives in git — only
+  the vault reference above.
+
 ## Deploying an update
 
 1. Push to `main` on `osidko/deadlock`.
-2. On the box: `ssh deploy@<preview-host>` → `cd /srv/preview/projects/deadlock && git pull`.
-   Static file changes (`index.html`, `items.js`) are live immediately — Caddy serves the
-   checkout directly, no reload needed.
+2. `git pull` the box checkout as the `deploy` user:
+   ```bash
+   ssh -i ~/.ssh/id_ed25519_claude claude@94.75.223.21 \
+     'sudo -u deploy git -C /srv/preview/projects/deadlock pull --ff-only'
+   ```
+   Static file changes (`index.html`, `items.js`, `favicon.svg`) are live immediately — Caddy
+   serves the checkout directly, no reload needed.
 3. **Only if `preview/vhost.caddy` changed:** sync it to
    `/srv/preview/projects/deadlock/vhost.caddy`, then **validate-then-reload** — `caddy
    validate` the full config and gracefully `caddy reload` only on success (never restart the
    shared Caddy; a bad vhost must not take down neighbour projects).
+4. Verify: `curl -sS -o /dev/null -w "%{http_code}" https://deadlock.sidko.net/` → 200.
 
-For anything box-level, use the **vps-admin** agent (the preview VPS owner); see
-`c:/Workspace/dev-codex/preview-vps.md`.
+For heavier box-level work, use the **vps-admin** agent (the preview VPS owner); see
+`c:/Workspace/dev-codex/preview-vps.md` and the fleet policy in `C:\ws\infra\CLAUDE.md`.

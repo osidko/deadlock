@@ -20,6 +20,9 @@
   *component* and 404s the whole site. Anchor with `{http.vars.root}/…`. (See INFRA.md.)
 - No basic auth and no database on this vhost — that's a deliberate deviation Oleg asked for,
   not an omission to "fix".
-- Box-level / Caddy work goes through the **vps-admin** agent; deploys are a `git pull` on the
-  box, and any vhost change is **validate-then-reload**, never a Caddy restart.
+- Deploys are a `git pull` on the box; any vhost change is **validate-then-reload**, never a
+  Caddy restart. Box access is the dedicated `claude` ed25519 key connecting to the
+  `net.sidko.*` VPS directly (no VPN) — full policy in `INFRA.md` → "Box access" and the fleet
+  authority `C:\ws\infra\CLAUDE.md`. Run git as the `deploy` user (`sudo -u deploy git …`).
+  For heavier box work, use the **vps-admin** agent.
 - `items_raw.json` is 9 MB and git-ignored — don't commit it.
