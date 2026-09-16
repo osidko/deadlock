@@ -1,6 +1,8 @@
 // Deadlock item set (source: deadlock-api.com public assets).
 // Hardcoded snapshot — no runtime API calls.
 // Only shopable, non-disabled items are included; Tier 5 items excluded.
+// "active": true = an item you assign to a slot and trigger in combat
+//   (is_active_item); false = a passive, always-on stat item.
 // "contains" lists the transitive component items this item is built from,
 // used to avoid picking a built item together with one of its components.
 const DEADLOCK_ITEMS = [
@@ -9,6 +11,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/extra_charge.png",
+    "active": false,
     "contains": []
   },
   {
@@ -16,6 +19,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/extra_spirit.png",
+    "active": false,
     "contains": []
   },
   {
@@ -23,6 +27,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/goose_egg.png",
+    "active": true,
     "contains": []
   },
   {
@@ -30,6 +35,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_burst.png",
+    "active": false,
     "contains": []
   },
   {
@@ -37,6 +43,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_reach.png",
+    "active": false,
     "contains": []
   },
   {
@@ -44,6 +51,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_regen.png",
+    "active": false,
     "contains": []
   },
   {
@@ -51,6 +59,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/rusted_barrel.png",
+    "active": true,
     "contains": []
   },
   {
@@ -58,6 +67,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_strike.png",
+    "active": false,
     "contains": []
   },
   {
@@ -65,6 +75,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/arcane_surge.png",
+    "active": false,
     "contains": [
       "Extra Stamina"
     ]
@@ -74,6 +85,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/bullet_resist_shredder.png",
+    "active": false,
     "contains": []
   },
   {
@@ -81,6 +93,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/cold_front.png",
+    "active": true,
     "contains": []
   },
   {
@@ -88,6 +101,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/improved_cooldown.png",
+    "active": false,
     "contains": []
   },
   {
@@ -95,6 +109,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/duration_extender.png",
+    "active": false,
     "contains": []
   },
   {
@@ -102,6 +117,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/improved_spirit.png",
+    "active": false,
     "contains": [
       "Extra Spirit"
     ]
@@ -111,6 +127,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_slow.png",
+    "active": false,
     "contains": []
   },
   {
@@ -118,6 +135,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_vulnerability.png",
+    "active": false,
     "contains": []
   },
   {
@@ -125,6 +143,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/quicksilver_reload.png",
+    "active": false,
     "contains": []
   },
   {
@@ -132,6 +151,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/slowing_hex.png",
+    "active": true,
     "contains": []
   },
   {
@@ -139,6 +159,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_sap.png",
+    "active": true,
     "contains": []
   },
   {
@@ -146,6 +167,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/suppressor.png",
+    "active": false,
     "contains": []
   },
   {
@@ -153,6 +175,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/decay.png",
+    "active": true,
     "contains": []
   },
   {
@@ -160,6 +183,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/disarming_hex.png",
+    "active": true,
     "contains": [
       "Rusted Barrel"
     ]
@@ -169,6 +193,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/greater_expansion.png",
+    "active": false,
     "contains": [
       "Mystic Expansion"
     ]
@@ -178,6 +203,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/knockdown.png",
+    "active": true,
     "contains": []
   },
   {
@@ -185,6 +211,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/radiant_regeneration.png",
+    "active": false,
     "contains": [
       "Mystic Regeneration"
     ]
@@ -194,6 +221,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/rapid_recharge.png",
+    "active": false,
     "contains": [
       "Extra Charge"
     ]
@@ -203,6 +231,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/silence_glyph.png",
+    "active": true,
     "contains": []
   },
   {
@@ -210,6 +239,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_snatch.png",
+    "active": false,
     "contains": [
       "Spirit Strike"
     ]
@@ -219,6 +249,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/superior_cooldown.png",
+    "active": false,
     "contains": [
       "Compress Cooldown"
     ]
@@ -228,6 +259,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/superior_duration.png",
+    "active": false,
     "contains": [
       "Duration Extender"
     ]
@@ -237,6 +269,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/surge_of_power.png",
+    "active": false,
     "contains": [
       "Extra Spirit"
     ]
@@ -246,6 +279,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/tankbuster.png",
+    "active": false,
     "contains": [
       "Mystic Burst"
     ]
@@ -255,6 +289,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/torment_pulse.png",
+    "active": false,
     "contains": []
   },
   {
@@ -262,6 +297,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/arctic_blast.png",
+    "active": true,
     "contains": [
       "Cold Front"
     ]
@@ -271,6 +307,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/boundless_spirit.png",
+    "active": false,
     "contains": [
       "Extra Spirit",
       "Improved Spirit"
@@ -281,6 +318,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/curse.png",
+    "active": true,
     "contains": []
   },
   {
@@ -288,6 +326,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/echo_shard.png",
+    "active": true,
     "contains": []
   },
   {
@@ -295,6 +334,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/escalating_exposure.png",
+    "active": false,
     "contains": [
       "Mystic Vulnerability"
     ]
@@ -304,6 +344,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/ethereal_shift.png",
+    "active": true,
     "contains": []
   },
   {
@@ -311,6 +352,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/focus_lens.png",
+    "active": true,
     "contains": [
       "Spirit Sap"
     ]
@@ -320,6 +362,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/lightning_scroll.png",
+    "active": false,
     "contains": [
       "Mystic Slow"
     ]
@@ -329,6 +372,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/magic_carpet.png",
+    "active": true,
     "contains": []
   },
   {
@@ -336,6 +380,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mercurial_magnum.png",
+    "active": false,
     "contains": [
       "Quicksilver Reload"
     ]
@@ -345,6 +390,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/mystic_reverb.png",
+    "active": false,
     "contains": []
   },
   {
@@ -352,6 +398,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/refresher.png",
+    "active": true,
     "contains": []
   },
   {
@@ -359,6 +406,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/scourge.png",
+    "active": true,
     "contains": []
   },
   {
@@ -366,6 +414,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/spirit_burn.png",
+    "active": false,
     "contains": []
   },
   {
@@ -373,6 +422,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/transcendent_cooldown.png",
+    "active": false,
     "contains": [
       "Compress Cooldown",
       "Superior Cooldown"
@@ -383,6 +433,7 @@ const DEADLOCK_ITEMS = [
     "category": "spirit",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/spirit/vortex_web.png",
+    "active": true,
     "contains": [
       "Slowing Hex"
     ]
@@ -392,6 +443,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/extra_health.png",
+    "active": false,
     "contains": []
   },
   {
@@ -399,6 +451,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/extra_regen.png",
+    "active": false,
     "contains": []
   },
   {
@@ -406,6 +459,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/extra_stamina.png",
+    "active": false,
     "contains": []
   },
   {
@@ -413,6 +467,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/grit.png",
+    "active": true,
     "contains": []
   },
   {
@@ -420,6 +475,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_rite.png",
+    "active": true,
     "contains": []
   },
   {
@@ -427,6 +483,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/melee_lifesteal.png",
+    "active": false,
     "contains": []
   },
   {
@@ -434,6 +491,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/rebuttal.png",
+    "active": false,
     "contains": []
   },
   {
@@ -441,6 +499,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/sprint_boots.png",
+    "active": false,
     "contains": []
   },
   {
@@ -448,6 +507,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/battle_vest.png",
+    "active": false,
     "contains": []
   },
   {
@@ -455,6 +515,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/bullet_lifesteal.png",
+    "active": false,
     "contains": []
   },
   {
@@ -462,6 +523,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/debuff_reducer.png",
+    "active": false,
     "contains": []
   },
   {
@@ -469,6 +531,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/enchanters_emblem.png",
+    "active": false,
     "contains": []
   },
   {
@@ -476,6 +539,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/enduring_speed.png",
+    "active": false,
     "contains": [
       "Sprint Boots"
     ]
@@ -485,6 +549,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/guardian_ward.png",
+    "active": true,
     "contains": [
       "Grit"
     ]
@@ -494,6 +559,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healbane.png",
+    "active": false,
     "contains": []
   },
   {
@@ -501,6 +567,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_booster.png",
+    "active": false,
     "contains": [
       "Extra Regen"
     ]
@@ -510,6 +577,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/reactive_barrier.png",
+    "active": false,
     "contains": [
       "Grit"
     ]
@@ -519,6 +587,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/restorative_locket.png",
+    "active": true,
     "contains": []
   },
   {
@@ -526,6 +595,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/return_fire.png",
+    "active": true,
     "contains": []
   },
   {
@@ -533,6 +603,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spirit_lifesteal.png",
+    "active": false,
     "contains": []
   },
   {
@@ -540,6 +611,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spirit_shielding.png",
+    "active": false,
     "contains": [
       "Grit"
     ]
@@ -549,6 +621,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/trophy_collector.png",
+    "active": false,
     "contains": [
       "Sprint Boots"
     ]
@@ -558,6 +631,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/weapon_shielding.png",
+    "active": false,
     "contains": [
       "Grit"
     ]
@@ -567,6 +641,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/bullet_resilience.png",
+    "active": false,
     "contains": []
   },
   {
@@ -574,6 +649,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/counterspell.png",
+    "active": false,
     "contains": []
   },
   {
@@ -581,6 +657,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/debuff_remover.png",
+    "active": true,
     "contains": []
   },
   {
@@ -588,6 +665,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/fortitude.png",
+    "active": false,
     "contains": [
       "Extra Health"
     ]
@@ -597,6 +675,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/fury_trance.png",
+    "active": true,
     "contains": [
       "Bullet Lifesteal"
     ]
@@ -606,6 +685,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_nova.png",
+    "active": true,
     "contains": [
       "Healing Rite"
     ]
@@ -615,6 +695,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/lifestrike.png",
+    "active": false,
     "contains": [
       "Melee Lifesteal"
     ]
@@ -624,6 +705,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/majestic_leap.png",
+    "active": true,
     "contains": []
   },
   {
@@ -631,6 +713,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/metal_skin.png",
+    "active": true,
     "contains": []
   },
   {
@@ -638,6 +721,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/rescue_beam.png",
+    "active": true,
     "contains": [
       "Healing Rite"
     ]
@@ -647,6 +731,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spirit_resilience.png",
+    "active": false,
     "contains": []
   },
   {
@@ -654,6 +739,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/stamina_mastery.png",
+    "active": false,
     "contains": [
       "Extra Stamina"
     ]
@@ -663,6 +749,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/veil_walker.png",
+    "active": false,
     "contains": [
       "Sprint Boots"
     ]
@@ -672,6 +759,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/warp_stone.png",
+    "active": true,
     "contains": []
   },
   {
@@ -679,6 +767,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/cheat_death.png",
+    "active": false,
     "contains": []
   },
   {
@@ -686,6 +775,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/colossus.png",
+    "active": true,
     "contains": [
       "Extra Health"
     ]
@@ -695,6 +785,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/divine_barrier.png",
+    "active": true,
     "contains": [
       "Grit",
       "Guardian Ward"
@@ -705,6 +796,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/diviners_kevlar.png",
+    "active": false,
     "contains": []
   },
   {
@@ -712,6 +804,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/healing_tempo.png",
+    "active": false,
     "contains": [
       "Extra Regen",
       "Healing Booster"
@@ -722,6 +815,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/indomitable.png",
+    "active": false,
     "contains": [
       "Grit",
       "Reactive Barrier"
@@ -732,6 +826,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/infuser.png",
+    "active": true,
     "contains": [
       "Spirit Lifesteal"
     ]
@@ -741,6 +836,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/inhibitor.png",
+    "active": false,
     "contains": []
   },
   {
@@ -748,6 +844,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/juggernaut.png",
+    "active": false,
     "contains": [
       "Enduring Speed",
       "Sprint Boots"
@@ -758,6 +855,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/leech.png",
+    "active": false,
     "contains": [
       "Bullet Lifesteal",
       "Spirit Lifesteal"
@@ -768,6 +866,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/phantom_strike.png",
+    "active": true,
     "contains": []
   },
   {
@@ -775,6 +874,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/plated_armor.png",
+    "active": false,
     "contains": []
   },
   {
@@ -782,6 +882,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/siphon_bullets.png",
+    "active": false,
     "contains": []
   },
   {
@@ -789,6 +890,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/spellbreaker.png",
+    "active": false,
     "contains": [
       "Debuff Reducer"
     ]
@@ -798,6 +900,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/unstoppable.png",
+    "active": true,
     "contains": [
       "Debuff Reducer"
     ]
@@ -807,6 +910,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/vampiric_burst.png",
+    "active": true,
     "contains": [
       "Bullet Lifesteal"
     ]
@@ -816,6 +920,7 @@ const DEADLOCK_ITEMS = [
     "category": "vitality",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/witchmail.png",
+    "active": false,
     "contains": []
   },
   {
@@ -823,6 +928,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/close_quarters.png",
+    "active": false,
     "contains": []
   },
   {
@@ -830,6 +936,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/basic_magazine.png",
+    "active": false,
     "contains": []
   },
   {
@@ -837,6 +944,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/headshot_booster.png",
+    "active": false,
     "contains": []
   },
   {
@@ -844,6 +952,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/high_velocity_rounds.png",
+    "active": false,
     "contains": []
   },
   {
@@ -851,6 +960,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/monster_rounds.png",
+    "active": false,
     "contains": []
   },
   {
@@ -858,6 +968,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/rapid_rounds.png",
+    "active": false,
     "contains": []
   },
   {
@@ -865,6 +976,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 1,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/restorative_shot.png",
+    "active": false,
     "contains": []
   },
   {
@@ -872,6 +984,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/active_reload.png",
+    "active": false,
     "contains": []
   },
   {
@@ -879,6 +992,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/fleetfoot.png",
+    "active": true,
     "contains": []
   },
   {
@@ -886,6 +1000,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/intensifying_magazine.png",
+    "active": false,
     "contains": []
   },
   {
@@ -893,6 +1008,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/kinetic_dash.png",
+    "active": false,
     "contains": [
       "Extra Stamina"
     ]
@@ -902,6 +1018,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/long_range.png",
+    "active": false,
     "contains": []
   },
   {
@@ -909,6 +1026,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/melee_charge.png",
+    "active": false,
     "contains": []
   },
   {
@@ -916,6 +1034,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/mystic_shot.png",
+    "active": false,
     "contains": []
   },
   {
@@ -923,6 +1042,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/opening_rounds.png",
+    "active": false,
     "contains": [
       "High-Velocity Rounds"
     ]
@@ -932,6 +1052,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/recharging_rounds.png",
+    "active": false,
     "contains": []
   },
   {
@@ -939,6 +1060,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/slowing_bullets.png",
+    "active": false,
     "contains": []
   },
   {
@@ -946,6 +1068,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spirit_shredder_bullets.png",
+    "active": false,
     "contains": []
   },
   {
@@ -953,6 +1076,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/split_shot.png",
+    "active": true,
     "contains": []
   },
   {
@@ -960,6 +1084,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/backstabber.png",
+    "active": false,
     "contains": []
   },
   {
@@ -967,6 +1092,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/swift_striker.png",
+    "active": false,
     "contains": [
       "Rapid Rounds"
     ]
@@ -976,6 +1102,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/titanic_magazine.png",
+    "active": false,
     "contains": [
       "Extended Magazine"
     ]
@@ -985,6 +1112,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 2,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/weakening_headshot.png",
+    "active": false,
     "contains": []
   },
   {
@@ -992,6 +1120,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/alchemical_fire.png",
+    "active": true,
     "contains": []
   },
   {
@@ -999,6 +1128,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/alchemical_seal.png",
+    "active": false,
     "contains": [
       "Mystic Expansion"
     ]
@@ -1008,6 +1138,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/berserker.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1015,6 +1146,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/blood_tribute.png",
+    "active": true,
     "contains": []
   },
   {
@@ -1022,6 +1154,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/burst_fire.png",
+    "active": false,
     "contains": [
       "Rapid Rounds"
     ]
@@ -1031,6 +1164,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/cultist_sacrifice.png",
+    "active": true,
     "contains": [
       "Monster Rounds"
     ]
@@ -1040,6 +1174,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/escalating_resilience.png",
+    "active": false,
     "contains": [
       "Extended Magazine"
     ]
@@ -1049,6 +1184,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/express_shot.png",
+    "active": false,
     "contains": [
       "High-Velocity Rounds"
     ]
@@ -1058,6 +1194,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/headhunter.png",
+    "active": false,
     "contains": [
       "Headshot Booster"
     ]
@@ -1067,6 +1204,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/heroic_aura.png",
+    "active": true,
     "contains": []
   },
   {
@@ -1074,6 +1212,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/hollow_point.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1081,6 +1220,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/hunters_aura.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1088,6 +1228,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/point_blank.png",
+    "active": false,
     "contains": [
       "Close Quarters"
     ]
@@ -1097,6 +1238,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/shadow_weave.png",
+    "active": true,
     "contains": []
   },
   {
@@ -1104,6 +1246,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/sharp_shooter.png",
+    "active": false,
     "contains": [
       "High-Velocity Rounds",
       "Long Range"
@@ -1114,6 +1257,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spellslinger_headshots.png",
+    "active": false,
     "contains": [
       "Spirit Shredder Bullets"
     ]
@@ -1123,6 +1267,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/tesla_bullets.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1130,6 +1275,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/toxic_bullets.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1137,6 +1283,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 3,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/weighted_shots.png",
+    "active": false,
     "contains": [
       "Slowing Bullets"
     ]
@@ -1146,6 +1293,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/armor_piercing_rounds.png",
+    "active": false,
     "contains": [
       "High-Velocity Rounds"
     ]
@@ -1155,6 +1303,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/capacitor.png",
+    "active": true,
     "contains": [
       "Tesla Bullets"
     ]
@@ -1164,6 +1313,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/crippling_headshot.png",
+    "active": false,
     "contains": [
       "Weakening Headshot"
     ]
@@ -1173,6 +1323,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/crushing_fists.png",
+    "active": false,
     "contains": [
       "Melee Charge"
     ]
@@ -1182,6 +1333,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/frenzy.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1189,6 +1341,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/glass_cannon.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1196,6 +1349,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/lucky_shot.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1203,6 +1357,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/ricochet.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1210,6 +1365,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/silencer.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1217,6 +1373,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spell_slinger.png",
+    "active": false,
     "contains": []
   },
   {
@@ -1224,6 +1381,7 @@ const DEADLOCK_ITEMS = [
     "category": "weapon",
     "tier": 4,
     "image": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/weapon/spiritual_overflow.png",
+    "active": false,
     "contains": [
       "Spirit Lifesteal"
     ]

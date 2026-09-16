@@ -185,6 +185,7 @@
     };
 
     const PICK_COUNT = 12;
+    const MAX_ACTIVE = 4; // cap on active (slot-triggered) items per roll
     const grid = document.getElementById("grid");
     const btn = document.getElementById("pick-btn");
 
@@ -198,12 +199,15 @@
     function pickRandom(list, n) {
       const pool = [...list];
       const chosen = [];
+      let activeCount = 0;
       const count = Math.min(n, pool.length);
       while (chosen.length < count && pool.length > 0) {
         const idx = Math.floor(Math.random() * pool.length);
         const candidate = pool.splice(idx, 1)[0];
+        if (candidate.active && activeCount >= MAX_ACTIVE) continue; // active cap reached
         if (chosen.some((c) => conflicts(c, candidate))) continue;
         chosen.push(candidate);
+        if (candidate.active) activeCount++;
       }
       return chosen;
     }
@@ -212,10 +216,16 @@
     let currentPicks = [];
 
     // Pick one fresh item, excluding a set of names already in play and
-    // anything that conflicts with the other current picks.
+    // anything that conflicts with the other current picks. Also respects the
+    // active cap: if the other picks already hold MAX_ACTIVE active items, only
+    // passive items are eligible.
     function pickOne(excludeNames, others) {
+      const activeInOthers = others.filter((o) => o.active).length;
       const candidates = DEADLOCK_ITEMS.filter(
-        (item) => !excludeNames.has(item.name) && !others.some((o) => conflicts(o, item))
+        (item) =>
+          !excludeNames.has(item.name) &&
+          !others.some((o) => conflicts(o, item)) &&
+          !(item.active && activeInOthers >= MAX_ACTIVE)
       );
       if (candidates.length === 0) return null;
       return candidates[Math.floor(Math.random() * candidates.length)];
